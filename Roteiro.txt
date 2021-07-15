@@ -1,0 +1,38 @@
+(x) Montar API para obter dados do backend:
+    (x) função para obter os municípios ordenados
+    (x) função para obter candidatos
+    (x) função para obter resultados das eleições (por cidade), ordenados por votos (mesclar com city e candidates)
+
+() Criar ElectionsPage
+
+() Componentes
+    () Select para cidades
+    () ElectionHeader para exibir quadro geral das eleições por cidade (Cidade, total de eleitores, Abstenção, comparecimento, número de candidatos)
+    () Candidate para exibir dados de cada candidato (Imagem, nome, eleito/não eleito, porcentagem de votos, total de votos, )
+
+() Criar estados para atualizar dados;
+
+Rotas e formato do backend:
+/cities
+    {
+        id: string,
+        name: string,
+        votingPopulation: number,
+        absence: number,
+        presence; number,
+    }
+
+/candidates
+    {
+    id: string,
+    name: string,
+    username: string,
+  }
+
+/election
+   {
+    id: string,
+    cityId: string,
+    candidateId: string,
+    votes: number,
+  }
