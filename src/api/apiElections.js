@@ -17,6 +17,5 @@ export async function getCandidates() {
 export async function getElectionsByCity(selectedCityId) {
     const {data} = await axios.get(`${baseURL}/election`);
     const elections = data.filter(item => item.cityId === selectedCityId).sort((a, b) => b.votes - a.votes);
-    console.log(elections);
     return elections;
 }
