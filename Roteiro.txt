@@ -3,12 +3,13 @@
     (x) função para obter candidatos
     (x) função para obter resultados das eleições (por cidade), ordenados por votos (mesclar com city e candidates)
 
-() Criar ElectionsPage
+(x) Criar ElectionsPage
 
 () Criar estados para atualizar dados;
 
 () Componentes
     () Select para cidades
+        ()children deve receber [{id: string, description: string}]
     () ElectionHeader para exibir quadro geral das eleições por cidade (Cidade, total de eleitores, Abstenção, comparecimento, número de candidatos)
     () Candidate para exibir dados de cada candidato (Imagem, nome, eleito/não eleito, porcentagem de votos, total de votos, )
 
