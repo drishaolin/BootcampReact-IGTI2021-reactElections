@@ -5,7 +5,6 @@ const baseURL = 'http://localhost:8080';
 export async function apiGetCities() {
     const {data} = await axios.get(`${baseURL}/cities`);
     const cities = data.sort((a,b) => a.name.localeCompare(b.name))
-    console.log("api cities", cities);
     return cities;
 }
 
