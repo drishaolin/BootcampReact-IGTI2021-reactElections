@@ -8,9 +8,9 @@
 () Criar estados para atualizar dados;
 
 () Componentes
-    () Select para cidades
-        ()children deve receber [{id: string, description: string}]
-    () ElectionHeader para exibir quadro geral das eleições por cidade (Cidade, total de eleitores, Abstenção, comparecimento, número de candidatos)
+    (x) Select para cidades
+        (x)children deve receber [{id: string, description: string}]
+    (x) Elections para exibir quadro geral das eleições por cidade (Cidade, total de eleitores, Abstenção, comparecimento, número de candidatos)
     () Candidate para exibir dados de cada candidato (Imagem, nome, eleito/não eleito, porcentagem de votos, total de votos, )
 
 
@@ -21,7 +21,7 @@ Rotas e formato do backend:
         name: string,
         votingPopulation: number,
         absence: number,
-        presence; number,
+        presence: number,
     }
 
 /candidates
