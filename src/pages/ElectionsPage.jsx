@@ -24,7 +24,6 @@ export default function ElectionsPage() {
         getAllCities();
         getCandidates();
     }, []);
-    console.log("Candidatos: ", candidates);
 
     useEffect(() => {
         async function getElections() {
@@ -33,12 +32,11 @@ export default function ElectionsPage() {
         }
         getElections();
     }, [selectedCity]);
-    console.log("Resultados: ", electionResult);
 
     function handleCityChange(e) {
         setSelectedCity(e.currentTarget.value);
     }
-
+        
     return (
         <div>
             <Header>React Elections</Header>
@@ -54,7 +52,18 @@ export default function ElectionsPage() {
                     </Select>
                 </div>
                 <Elections cityElectionData={cities.find((city) => city.id === selectedCity)}>
-                    <Candidate />
+                    {electionResult.map((election) => {
+                        let candidate = candidates.find(
+                            (candidate) => candidate.id === election.candidateId
+                        );
+                        return (
+                            <Candidate
+                                key={election.id}
+                                candidate={candidate}
+                                electionResult={election}
+                            />
+                        );
+                    })}
                 </Elections>
             </Main>
         </div>

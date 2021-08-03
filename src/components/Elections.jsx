@@ -28,7 +28,7 @@ export default function Elections({
                     <FormattedNumber>{presence}</FormattedNumber>
                 </span>
             </div>
-            <div>
+            <div className="flex flex-wrap justify-center">
                 {candidates}
             </div>
         </div>
