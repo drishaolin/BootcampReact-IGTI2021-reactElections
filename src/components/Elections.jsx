@@ -26,6 +26,9 @@ export default function Elections({
                     {formattedNumber(presence)}
                 </span>
             </div>
+            <div>
+                {candidates}
+            </div>
         </div>
     );
 }
