@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { apiGetCities } from "../api/apiElections";
+import { apiGetCandidates, apiGetCities, apiGetElectionsByCity } from "../api/apiElections";
+import Candidate from "../components/Candidate";
 import Elections from "../components/Elections";
 import Header from "../components/Header";
 import Main from "../components/Main";
@@ -8,14 +9,31 @@ import Select from "../components/Select";
 export default function ElectionsPage() {
     const [cities, setCities] = useState([]);
     const [selectedCity, setSelectedCity] = useState("");
+    const [candidates, setCandidates] = useState([]);
+    const [electionResult, setElectionResult] = useState([]);
 
     useEffect(() => {
         async function getAllCities() {
             const allCities = await apiGetCities();
             setCities(allCities);
         }
+        async function getCandidates() {
+            const allCandidates = await apiGetCandidates();
+            setCandidates(allCandidates);
+        }
         getAllCities();
+        getCandidates();
     }, []);
+    console.log("Candidatos: ", candidates);
+
+    useEffect(() => {
+        async function getElections() {
+            const elections = await apiGetElectionsByCity(selectedCity);
+            setElectionResult(elections);
+        }
+        getElections();
+    }, [selectedCity]);
+    console.log("Resultados: ", electionResult);
 
     function handleCityChange(e) {
         setSelectedCity(e.currentTarget.value);
@@ -35,9 +53,9 @@ export default function ElectionsPage() {
                         {cities.map(({ id, name }) => ({ id: id, description: name }))}
                     </Select>
                 </div>
-                <Elections
-                    cityElectionData={cities.find((city) => city.id === selectedCity)}
-                ></Elections>
+                <Elections cityElectionData={cities.find((city) => city.id === selectedCity)}>
+                    <Candidate />
+                </Elections>
             </Main>
         </div>
     );
