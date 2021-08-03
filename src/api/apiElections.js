@@ -10,7 +10,6 @@ export async function apiGetCities() {
 
 export async function apiGetCandidates() {
     const {data} = await axios.get(`${baseURL}/candidates`);
-    console.log(data);
     return data;
 }
 

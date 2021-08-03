@@ -33,10 +33,18 @@ export default function ElectionsPage() {
         getElections();
     }, [selectedCity]);
 
+    const fullElection = electionResult.map((election, index) => {
+        const city = cities.find((city) => city.id === election.cityId);
+        let percentage = ((election.votes / (city.presence - 1)) * 100).toFixed(2);
+        let elected = index === 0 ? true : false;
+
+        return { ...election, percentage: percentage, elected: elected };
+    });
+
     function handleCityChange(e) {
         setSelectedCity(e.currentTarget.value);
     }
-        
+
     return (
         <div>
             <Header>React Elections</Header>
@@ -52,7 +60,7 @@ export default function ElectionsPage() {
                     </Select>
                 </div>
                 <Elections cityElectionData={cities.find((city) => city.id === selectedCity)}>
-                    {electionResult.map((election) => {
+                    {fullElection.map((election) => {
                         let candidate = candidates.find(
                             (candidate) => candidate.id === election.candidateId
                         );
